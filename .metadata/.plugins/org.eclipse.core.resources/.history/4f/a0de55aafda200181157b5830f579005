@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:mvc="http://www.springframework.org/schema/mvc" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:p="http://www.springframework.org/schema/p" 
+xmlns:context="http://www.springframework.org/schema/context" 
+xmlns:aop="http://www.springframework.org/schema/aop" 
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+http://www.springframework.org/schema/mvc 
+http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+">
+	<mvc:annotation-driven/>
+	<aop:aspectj-autoproxy />
+	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
+	<context:component-scan base-package="com.tms.controller">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+	</context:component-scan>
+	<!-- 处理静态资源,排除被拦截 -->
+	<mvc:resources location="/plugins/" mapping="/plugins/**"/>
+	<mvc:resources location="/javascript/" mapping="/javascript/**"/>
+	<mvc:resources location="/web/" mapping="/web/**"/>
+	<mvc:resources location="/businessLicenceImage/" mapping="/businessLicenceImage/**"/>
+	
+	<!--默认首页设置，即定义无Controller的path<->view直接映射：redirect:/index -->  
+	<!-- <mvc:view-controller path="/" view-name="/index"/> -->
+	
+	<bean name="objectMapper" class="com.tms.commons.CustomObjectMapper" />
+	
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="1" />
+		<property name="favorParameter" value="false" />
+		<property name="ignoreAcceptHeader" value="true" />
+		<property name="defaultContentType" value="application/json" />
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html"/>    
+				<entry key="json" value="application/json" />
+				<entry key="xml" value="application/xml" />
+			</map>
+		</property>
+		<property name="viewResolvers">
+			<list>
+			<!--  配置freemarker作为视图层 -->
+			<bean id="freeMarkerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+				<property name="cache" value="true" />
+				<property name="order" value="0" />
+				<property name="prefix" value="/WEB-INF/view/" />
+				<property name="suffix" value=".html" />
+				<property name="contentType" value="text/html;charset=utf-8" />
+				<!--  把contextPath暴露给freemaker，前端可以通过${request.getContextPath()} 来获取上下文路径 
+				<property name="requestContextAttribute" value="request"/>
+				-->
+				<property name="viewClass" value="com.tms.commons.MyFreeMarkerView"/>
+			</bean>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+					<property name="objectMapper" ref="objectMapper"></property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- FreeMarker环境配置 -->
+	<bean id="freemarkerConfig" class="com.shiro.tags.ShiroTagFreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="" />
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="tag_syntax">auto_detect</prop>
+				<prop key="template_update_delay">1</prop>
+				<prop key="defaultEncoding">UTF-8</prop>
+				<prop key="url_escaping_charset">UTF-8</prop>
+				<prop key="locale">zh_CN</prop>
+				<prop key="boolean_format">true,false</prop>
+				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+				<prop key="date_format">yyyy-MM-dd</prop>
+				<prop key="time_format">HH:mm:ss</prop>
+				<prop key="number_format">0.######</prop>
+				<prop key="whitespace_stripping">true</prop>
+				<prop key="classic_compatible">true</prop>
+				<!-- freemarker模板位置 -->
+				<prop key="auto_import">/WEB-INF/ftl/spring.ftl as s</prop>
+				<prop key="object_wrapper">freemarker.ext.beans.BeansWrapper</prop>
+			</props>
+		</property>
+	</bean>
+    
+    <!-- 文件上传相关 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--one of the properties available;the maximum file size in bytes-->
+        <!-- set the max upload size1MB   1048576     -->
+        <property name="maxUploadSize">
+            <value>52428800</value>
+        </property>
+        <property name="maxInMemorySize">
+            <value>52428800</value>
+        </property>
+    </bean>
+
+	<mvc:interceptors>
+	    <mvc:interceptor>
+	        <mvc:mapping path="/**" />
+	        <bean class="com.github.miemiedev.mybatis.paginator.springmvc.PageListAttrHandlerInterceptor"></bean>
+	    </mvc:interceptor>
+	    <mvc:interceptor>
+	        <mvc:mapping path="/**" />
+	        <bean class="com.tms.interceptor.TokenInterceptor"></bean>
+	    </mvc:interceptor>
+	    
+	</mvc:interceptors>
+	
+</beans>

@@ -1,0 +1,5 @@
+package com.liu.spring.service.impl;
+
+public @interface Retention {
+
+}

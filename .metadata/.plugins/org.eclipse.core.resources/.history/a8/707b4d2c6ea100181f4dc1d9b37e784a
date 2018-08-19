@@ -1,0 +1,10 @@
+package com.liu.spring.service.impl;
+
+import com.liu.spring.annotion.LchServiceAnnotion;
+
+@LchServiceAnnotion
+public class Test {
+	public  void add(){
+		System.out.println("新增方法");
+	}
+}

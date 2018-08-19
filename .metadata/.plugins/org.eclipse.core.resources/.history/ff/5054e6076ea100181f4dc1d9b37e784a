@@ -1,0 +1,11 @@
+package com.liu.spring.common;
+
+import com.liu.spring.annotion.LchServiceAnnotion;
+
+import lombok.Data;
+@LchServiceAnnotion
+@Data
+public class BeanDefine {
+	private String id;
+	private String clazz;
+}

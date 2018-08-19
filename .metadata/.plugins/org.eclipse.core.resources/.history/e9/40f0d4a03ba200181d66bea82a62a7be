@@ -1,0 +1,8 @@
+package com.liu.springmvc.controller;
+
+import com.liu.springmvc.annotion.LCHController;
+
+@LCHController
+public class TestController {
+
+}

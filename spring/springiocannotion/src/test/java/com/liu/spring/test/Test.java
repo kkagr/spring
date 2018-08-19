@@ -1,0 +1,57 @@
+package com.liu.spring.test;
+
+
+import java.io.File;
+import java.io.InputStream;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.xml.transform.sax.SAXResult;
+
+import org.apache.commons.lang.StringUtils;
+import org.dom4j.Attribute;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+
+public class Test {
+	public static void main(String[] args){
+		Test test = new Test();
+		System.out.println("123123");
+		try {
+			test.test();
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void test() throws DocumentException{
+		SAXReader saxReader = new SAXReader();
+		Document document =  saxReader.read(getResourceAsStream("beans.xml"));
+		Element rootElement = document.getRootElement(); 
+		getNodes(rootElement);
+	}
+	private InputStream getResourceAsStream(String string) {
+		// TODO Auto-generated method stub
+		return this.getClass().getClassLoader().getResourceAsStream(string);
+	}
+	public void getNodes(Element rootElement){
+		System.out.println("获得的节点名称为："+rootElement.getName());
+		List<Attribute> attributes = rootElement.attributes();
+		for(Attribute attribute:attributes){
+			System.out.println(attribute.getName()+"----"+attribute.getValue());
+		}
+		String textTrim =rootElement.getTextTrim();
+		if(StringUtils.isBlank(textTrim)){
+			System.out.println("textTrim:"+textTrim);
+		}
+		Iterator elementIterator = rootElement.elementIterator();
+		while (elementIterator.hasNext()) {
+			Element next = (Element) elementIterator.next();
+			getNodes(next);
+			
+		}
+	}
+
+}

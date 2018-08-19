@@ -1,0 +1,18 @@
+package com.liu.mybatis.sqlsession;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+
+public class MyMapperProxy implements InvocationHandler{
+	private MySqlSession mySqqlsession;
+	private MyConfiguration myConfiguration;
+	public MyMapperProxy( MyConfiguration myConfiguration,MySqlSession mySqqlsession) {
+		this.mySqqlsession = mySqqlsession;
+		this.myConfiguration = myConfiguration;
+	}
+	@Override
+	public Object invoke(Object var1, Method var2, Object[] var3) throws Throwable {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

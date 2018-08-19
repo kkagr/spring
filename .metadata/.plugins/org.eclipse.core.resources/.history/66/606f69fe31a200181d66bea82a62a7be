@@ -1,0 +1,23 @@
+package com.liu.springmvc.servlet;
+
+import javax.servlet.http.HttpServlet;
+
+/**
+ * 
+* @ClassName: LchDispatchServlet 
+* @Description: TODO(自定义前端控制器) 
+* @author kkagr
+* @date 2018年8月17日 下午11:19:40 
+*
+ */
+public class LchDispatchServlet extends HttpServlet{
+	/*1.创建一个前端控制器LchDispatchServlet，拦截所有的请求（springmvc基于servlet实现）
+	  2.初始化操作重写servlet中的init（）方法
+	    2.1.将扫包范围内的所有类，注入到springmvc容器中
+	    2.2.将url映射和方法进行关联
+	    	2.2.1判断类上是否有注解，使用java反射机制循环遍历方法，判断类上是否有注解，进行封装url和方法
+	  3.处理请求重写Get或者Post方法
+	  	3.1获取请求url，去urlBeans集合中获取示例对象，获取实例对象后 ，调用urlMothod集合获取方法名称，使用反射机制执行
+	*/
+
+}

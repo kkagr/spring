@@ -1,0 +1,12 @@
+package com.liu.mybatis.sqlsession;
+
+import com.liu.mybatis.mapper.userMapper;
+
+public class MySqlSession {
+
+	public userMapper getMapper(Class<userMapper> class1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

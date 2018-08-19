@@ -1,0 +1,12 @@
+package com.liu.mybatis.sqlsession;
+
+import com.liu.mybatis.config.MapperBean;
+
+public class MyConfiguration {
+
+	public MapperBean readMapper(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

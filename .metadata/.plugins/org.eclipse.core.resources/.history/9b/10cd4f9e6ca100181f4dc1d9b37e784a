@@ -1,0 +1,5 @@
+package com.liu.spring.service.impl;
+import  com.liu.spring.annotion;
+public @interface LchServiceAnnotion {
+
+}

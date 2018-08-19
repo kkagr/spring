@@ -1,0 +1,35 @@
+package com.liu.spring.servlet;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+import org.apache.commons.lang.StringUtils;
+
+public class LchContextLoaderListener implements ServletContextListener{
+	private String[] configLocations;
+	@Override
+	public void contextDestroyed(ServletContextEvent var1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void contextInitialized(ServletContextEvent event) {
+		// TODO Auto-generated method stub
+		String initParameter = event.getServletContext().getInitParameter("contextConfigLocation");
+		String[] locations = initParameter.substring(5).split(";");
+	}
+	public void setConfigLocations(String[] locations) {
+		if (locations != null) {
+			this.configLocations = new String[locations.length];
+
+			for (int i = 0; i < locations.length; ++i) {
+				this.configLocations[i] = this.resolvePath(locations[i]).trim();
+			}
+		} else {
+			this.configLocations = null;
+		}
+
+	}
+
+}

@@ -1,0 +1,20 @@
+package com.liu.spring.servlet;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+public class LchContextLoaderListener implements ServletContextListener{
+
+	@Override
+	public void contextDestroyed(ServletContextEvent var1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void contextInitialized(ServletContextEvent var1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper nameSpace="liu.mybatis.mapper.userMapper">
+	<select id="getuserbyId" resultType="liu.mybatis.bean.User">
+		select * from user where id=?
+	</select>
+</mapper>

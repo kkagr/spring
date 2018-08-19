@@ -1,0 +1,9 @@
+package com.liu.spring.service.impl;
+import com.liu.spring.service.TestService;
+@LchServiceAnnotion
+public class TestServiceImpl implements TestService{
+	
+	public  void add(){
+		System.out.println("新增方法");
+	}
+}

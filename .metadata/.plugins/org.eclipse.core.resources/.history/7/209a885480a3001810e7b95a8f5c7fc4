@@ -1,0 +1,14 @@
+package com.liu.mybatis.sqlsession;
+
+import java.lang.reflect.Proxy;
+
+import com.liu.mybatis.mapper.userMapper;
+
+public class MySqlSession {
+	MyConfiguration myConfiguration = new MyConfiguration();
+
+	public <T> T getMapper(Class<T> cls){
+		return  (T)Proxy.newProxyInstance(cls.getClassLoader(), new Class[]{cls}, new MyMapperProxy(myConfiguration,this));
+	}
+
+}

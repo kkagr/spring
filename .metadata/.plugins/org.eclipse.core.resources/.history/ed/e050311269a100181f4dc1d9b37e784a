@@ -1,0 +1,8 @@
+package com.liu.spring.test;
+
+public class Snippet {
+	public static void main(String[] args) {
+		com.liu.spring.test
+	}
+}
+

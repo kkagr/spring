@@ -1,0 +1,5 @@
+package com.liu.springmvc.servlet;
+
+public class LchDispatchServlet {
+
+}

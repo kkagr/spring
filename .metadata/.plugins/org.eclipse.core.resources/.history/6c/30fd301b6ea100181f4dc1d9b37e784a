@@ -1,0 +1,8 @@
+package com.liu.spring.service.impl;
+
+import com.liu.spring.annotion.LchServiceAnnotion;
+
+@LchServiceAnnotion
+public class Test {
+
+}

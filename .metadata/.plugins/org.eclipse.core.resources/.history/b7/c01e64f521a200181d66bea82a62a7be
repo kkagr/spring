@@ -1,0 +1,54 @@
+package com.liu.spring.common;
+
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
+import org.apache.commons.lang.StringUtils;
+
+import com.liu.spring.annotion.LchServiceAnnotion;
+
+public class LchClassXMLApplication {
+	//扫包范围
+	private String packageName;
+	private ConcurrentHashMap<String, Class<?>> beans=new ConcurrentHashMap<>();
+	public LchClassXMLApplication(String packageName){
+		this.packageName=packageName;
+		 initBeans();
+	}
+	public void initBeans(){
+		List<Class<?>> classes = ClassUtil.getClasses(packageName);
+		findClassAnnotion(classes);
+	}
+	public void findClassAnnotion(List<Class<?>> classes){
+		for(Class<?> clazz:classes){
+			LchServiceAnnotion annotation = clazz.getAnnotation(LchServiceAnnotion.class);
+			if(annotation!=null){
+				 String className = clazz.getSimpleName();
+				 String beanId = toUpperCaseFirstOne(className);
+				 beans.put(beanId, clazz);
+				 continue;
+			}
+			
+		}
+	}
+	
+	//首字母转大写
+	public static String toUpperCaseFirstOne(String str){
+		char[] chars = str.toCharArray();
+		chars[0]+=32;
+		return chars.toString();
+	}
+	public Object getBean(String beanId) throws Exception{
+		if(StringUtils.isBlank(beanId)){
+			throw new Exception("beanId不能为空");
+		}
+		Class<?> classInfo = beans.get(beanId);
+		if(classInfo == null){
+			throw new Exception("class not fount");
+		}
+		return newInstance(classInfo);
+	}
+	public Object newInstance(Class<?> classInfo) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
+		return classInfo.newInstance();
+	}
+}

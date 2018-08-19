@@ -1,0 +1,51 @@
+package com.liu.springmvc.servlet;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.concurrent.ConcurrentHashMap;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * 
+* @ClassName: LchDispatchServlet 
+* @Description: TODO(自定义前端控制器) 
+* @author kkagr
+* @date 2018年8月17日 下午11:19:40 
+*
+ */
+public class LchDispatchServlet extends HttpServlet{
+	public static ConcurrentHashMap<String, Object> ioc = new ConcurrentHashMap<>();
+	String  prefix = "/";
+	String suffix = ".jsp";
+	@Override
+	public void init(ServletConfig config) throws ServletException {}
+	
+
+
+
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		
+		doPost(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+			doDispatch(req, resp);
+	}
+	private void doDispatch(HttpServletRequest req, HttpServletResponse resp) throws IOException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ServletException {
+				extResourceViewResolver("test", req, resp);
+	}
+	private void extResourceViewResolver(String test,HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException {
+		String  prefix = "/";
+		String suffix = ".html";
+		req.getRequestDispatcher(prefix+"test"+suffix).forward(req, resp);
+	}
+	
+}

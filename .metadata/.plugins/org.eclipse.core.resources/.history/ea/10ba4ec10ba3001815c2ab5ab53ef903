@@ -1,0 +1,59 @@
+package com.liu.spring.servlet;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+
+import com.liu.spring.common.ClassUtil;
+import com.liu.spring.common.Handle;
+import com.liu.spring.common.ReadXmlUtil;
+import com.liu.spring.common.SystemParam;
+
+public class LchDispatchServlet extends HttpServlet{
+	public static ConcurrentHashMap<String, Object> ioc = new ConcurrentHashMap<>();
+	public static List<Handle> handleMapping = new ArrayList<>();
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		//1.º”‘ÿ≈‰÷√Œƒº˛
+		String test = config.getInitParameter("contextConfigLocation");
+		try {
+			List<Element> springList = SystemParam.springElement;
+			for(Element element:springList){
+				if( element.attributeValue("base-package") != null);{
+					String servicePackage = element.attributeValue("base-package");
+					List<Class<?>> classes = ClassUtil.getClasses(servicePackage);
+				}
+			}
+			List<Element> elementList = ReadXmlUtil.readerXml(test);
+			for(Element element:elementList){
+				
+			}
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(test);
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		super.doPost(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		super.doPost(req, resp);
+	}
+}

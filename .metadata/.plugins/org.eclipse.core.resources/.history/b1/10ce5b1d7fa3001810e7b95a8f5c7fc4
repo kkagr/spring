@@ -1,0 +1,8 @@
+package com.liu.mybatis.sqlsession;
+
+public class MyConfiguration {
+	public MyMapperProxy( MyConfiguration myConfiguration,MySqlSession mySqqlsession) {
+		this.mySqqlsession = mySqqlsession;
+		this.myConfiguration = myConfiguration;
+	}
+}

@@ -1,0 +1,12 @@
+package com.liu.spring.common;
+
+public class LchClassXMLApplication {
+	//É¨°ü·¶Î§
+	private String packageName;
+	public LchClassXMLApplication(String packageName){
+		this.packageName=packageName;
+	}
+	public void initBeans(){
+		ClassUtil.getClasses(packageName);
+	}
+}

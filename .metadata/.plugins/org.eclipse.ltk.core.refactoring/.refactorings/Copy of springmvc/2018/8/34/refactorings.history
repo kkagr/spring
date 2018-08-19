@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;LchDispatchServlet.java&apos; to &apos;com.liu.springmvc.servlet.LchDispatchServlet.java&apos;&#x0D;&#x0A;- Original project: &apos;Copy of springmvc&apos;&#x0D;&#x0A;- Destination element: &apos;com.liu.springmvc.servlet.LchDispatchServlet.java&apos;&#x0D;&#x0A;- Original element: &apos;com.liu.springmvc.servlet.LchDispatchServlet.java&apos;" description="Copy compilation unit" destination="/src\/main\/java&lt;com.liu.springmvc.servlet{LchDispatchServlet.java" element1="/src\/main\/java&lt;com.liu.springmvc.servlet{LchDispatchServlet.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1534654567700" units="1" version="1.0"/>
+</session>
