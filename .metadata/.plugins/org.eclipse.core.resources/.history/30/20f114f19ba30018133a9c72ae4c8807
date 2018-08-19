@@ -1,0 +1,28 @@
+package com.liu.spring.controller;
+
+import java.io.IOException;
+import java.io.OutputStream;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.liu.spring.annotation.LCHAutorited;
+import com.liu.spring.annotation.LCHController;
+import com.liu.spring.annotation.LCHRequestMapping;
+import com.liu.spring.annotation.LCHRequestParam;
+import com.liu.spring.service.TestService;
+
+@LCHController
+@LCHRequestMapping("/test")
+public class TestController {
+	@LCHAutorited
+	private TestService testService;
+
+	@LCHRequestMapping("/test")
+	public String test(HttpServletRequest requset,
+						   HttpServletResponse response,
+						   @LCHRequestParam(value ="name") String name) throws IOException{
+		
+		return "test";
+	}
+}

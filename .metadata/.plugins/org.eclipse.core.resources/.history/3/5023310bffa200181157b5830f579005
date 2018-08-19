@@ -1,5 +1,0 @@
-package com.liu.spring.annotion;
-
-public @interface Lchs {
-
-}

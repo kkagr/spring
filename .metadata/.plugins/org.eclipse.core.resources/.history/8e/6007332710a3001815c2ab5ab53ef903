@@ -1,7 +1,0 @@
-package com.liu.spring.service.impl;
-
-import com.liu.spring.service.TestService;
-
-public class TestServiceImpl implements TestService {
-
-}

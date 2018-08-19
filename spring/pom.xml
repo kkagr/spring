@@ -51,5 +51,6 @@
  	<module>springmvcstudy</module>
  	<module>mybatis</module>
  	<module>mybatisstudy</module>
+ 	<module>springmvcmybatis</module>
  </modules>
 </project>

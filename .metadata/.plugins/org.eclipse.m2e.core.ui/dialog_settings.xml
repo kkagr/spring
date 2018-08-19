@@ -3,12 +3,17 @@
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
 			<item value="com.liu.test"/>
+			<item value="com.liu.mabatis"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
-			<item value="springmvcstudy"/>
+			<item value="springmvcmybatis"/>
 			<item value="spring"/>
+			<item value="mybatisstudy"/>
+			<item value="mybatis"/>
+			<item value="test"/>
+			<item value="springmvcstudy"/>
 			<item value="springmvc"/>
 			<item value="springiocannotion"/>
 			<item value="springiocorigin"/>
@@ -50,6 +55,10 @@
 	</section>
 	<section name="MavenModuleWizardParentPage">
 		<list key="moduleName">
+			<item value="springmvcmybatis"/>
+			<item value="mybatisstudy"/>
+			<item value="mybatis"/>
+			<item value="test"/>
 			<item value="springmvcstudy"/>
 			<item value="springmvc"/>
 			<item value="springiocannotion"/>
@@ -67,6 +76,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="D:\eclipseworkspace\springmvcioc\spring"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -79,13 +89,13 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
-			<item value="org.springmvcstudy"/>
+			<item value="org.springmvcmybatis"/>
 		</list>
 		<list key="groupId">
 			<item value="com.liu.test"/>
 		</list>
 		<list key="artifactId">
-			<item value="springmvcstudy"/>
+			<item value="springmvcmybatis"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

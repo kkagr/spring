@@ -1,0 +1,136 @@
+package com.liu.spring.servlet;
+
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import com.liu.spring.annotation.LCHAutorited;
+import com.liu.spring.annotation.LCHController;
+import com.liu.spring.annotation.LCHRequestMapping;
+import com.liu.spring.annotation.LCHService;
+
+import org.apache.commons.lang.StringUtils;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.XPath;
+
+import com.liu.spring.common.ClassUtil;
+import com.liu.spring.common.ReadXmlUtil;
+import com.liu.spring.common.characterUtil;
+/**
+ *1.创建一个前端控制器LchDispatchServlet，拦截所有的请求（springmvc基于servlet实现）
+ *2.初始化操作重写servlet中的init（）方法
+ *		2.1.读取web.xml,然后获取springmvc.xml.将扫包范围内的所有类，注入到springmvc容器中
+	    2.2.将url映射和方法进行关联
+	    	2.2.1判断类上是否有注解，使用java反射机制循环遍历方法，判断类上是否有注解，进行封装url和方法
+	     3.处理请求重写Get或者Post方法
+	     3.1获取请求url，去urlBeans集合中获取示例对象，获取实例对象后 ，调用urlMothod集合获取方法名称，使用反射机制执行
+* @ClassName: LchDispatcherServlet 
+* @Description: TODO(这里用一句话描述这个类的作用) 
+* @author kkagr
+* @date 2018年8月19日 下午5:32:23 
+*
+ */
+public class LchDispatcherServlet extends HttpServlet{
+	public static List<Class<?>> scopClassList;//获取扫描包中所有的类
+	public String prefix = "/";//springmvc中视图前缀
+	public String suffix =".jsp";//springmvc中视图后缀
+	public static ConcurrentHashMap<String, Object> ioc = new ConcurrentHashMap<>();
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		//1.首先读取web.xml,然后得到springmvc.xml,然后解析xml
+		String springmvcxml =  config.getInitParameter("contextConfigLocation");
+		try {
+			//得到springmvc.xml后进行解析
+			List<Element> elementList = ReadXmlUtil.readerXml(springmvcxml);
+			for(Element element:elementList){
+				Map<String,String> nsMap = new HashMap<String,String>();
+				 nsMap.put("ns","http://www.springframework.org/schema/beans");
+				if( element.attributeValue("base-package") != null);{
+					String servicePackage = element.attributeValue("base-package");
+					List<Class<?>> classes = ClassUtil.getClasses(servicePackage);
+					 XPath propertyxsub = element.createXPath("ns:property");
+		                propertyxsub.setNamespaceURIs(nsMap);
+		                List<Element> propertys = propertyxsub.selectNodes(element);
+		                for(Element property: propertys){
+		                	if("prefix".equals( property.attributeValue("name"))){
+		                		prefix = property.attributeValue("value");
+		                	}
+		                	if("suffix".equals( property.attributeValue("name"))){
+		                		suffix = property.attributeValue("value");
+		                	}
+		                }
+				}
+			}
+			//3.初始化所有相关类的实例，并且将其放入到ioc容器中，也就是map中
+			doInstance(scopClassList);	
+			//4.自动实现依赖注入
+			doAutiWrited();
+			//5.初始化HandleMapping
+			doInitHandlerMapping();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doPost(req, resp);
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doPost(req, resp);
+	}
+	private void doInstance(List<Class<?>> classes) throws Exception {
+		for(Class<?> clazz:classes){
+			if(clazz.isAnnotationPresent(LCHController.class)){
+				String beanName = characterUtil.toLowerCaseFirstOne(clazz.getSimpleName());
+				ioc.put(beanName, ClassUtil.newInstance(clazz));
+			}else if(clazz.isAnnotationPresent(LCHService.class)){
+				LCHService service = clazz.getAnnotation(LCHService.class);
+				String beanName = service.value();
+				if(StringUtils.isBlank(beanName)){
+					beanName = characterUtil.toLowerCaseFirstOne(clazz.getSimpleName());
+				}
+				ioc.put(beanName, clazz.newInstance());
+				//3.如果是接口，使用接口类型作为key
+				Class<?>[] interfaces = clazz.getInterfaces();
+				for(Class<?> i:interfaces){
+					ioc.put(i.getName(), clazz.newInstance());
+				}
+			}else{
+				continue;
+			}
+		}
+	}
+	/**
+	 * 自动注入Lchautowrite注解
+	* @author kkagr
+	* @date: 2018年8月19日 下午6:07:06
+	 */
+	private void doAutiWrited() {
+		if(ioc.isEmpty()){
+			return;
+		}else{
+			for(Map.Entry<String, Object> entry:ioc.entrySet()){
+				Field[] declaredFields = ioc.getClass().getDeclaredFields();
+				for(Field field:declaredFields){
+					
+				}
+			}
+		}
+		
+	}
+	
+}

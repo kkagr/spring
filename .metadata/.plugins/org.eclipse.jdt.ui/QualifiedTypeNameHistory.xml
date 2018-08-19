@@ -25,18 +25,15 @@
 <fullyQualifiedTypeName name="com.liu.spring.service.impl.TestServiceImpl"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="com.liu.spring.service.TestService1"/>
-<fullyQualifiedTypeName name="java.lang.reflect.Field"/>
 <fullyQualifiedTypeName name="com.liu.spring.annotion.LchResource"/>
 <fullyQualifiedTypeName name="javax.swing.text.html.parser.Entity"/>
 <fullyQualifiedTypeName name="org.dom4j.Entity"/>
 <fullyQualifiedTypeName name="org.w3c.dom.Entity"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
 <fullyQualifiedTypeName name="com.liu.springmvc.annotion.LCHController"/>
 <fullyQualifiedTypeName name="com.liu.springmvc.common.characterUtil"/>
 <fullyQualifiedTypeName name="com.liu.springmvc.common.ClassUtil"/>
 <fullyQualifiedTypeName name="java.util.concurrent.ConcurrentHashMap"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
-<fullyQualifiedTypeName name="java.util.Map.Entry"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Method"/>
 <fullyQualifiedTypeName name="org.junit.runner.Request"/>
 <fullyQualifiedTypeName name="org.apache.commons.lang.StringUtils"/>
@@ -47,4 +44,18 @@
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletContextListener"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletConfig"/>
+<fullyQualifiedTypeName name="org.dom4j.XPath"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="com.liu.mybatis.config.MapperBean"/>
+<fullyQualifiedTypeName name="com.liu.mybatis.config.Function"/>
+<fullyQualifiedTypeName name="com.liu.mybatis.sqlsession.MySqlSession"/>
+<fullyQualifiedTypeName name="com.liu.mybatis.mapper.userMapper"/>
+<fullyQualifiedTypeName name="com.liu.mybatis.bean.User"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Proxy"/>
+<fullyQualifiedTypeName name="com.liu.mybatis.sqlsession.MyConfiguration"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+<fullyQualifiedTypeName name="com.liu.spring.annotation.LCHService"/>
+<fullyQualifiedTypeName name="java.util.Map.Entry"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Field"/>
+<fullyQualifiedTypeName name="com.liu.spring.annotation.LCHAutorited"/>
 </qualifiedTypeNameHistroy>
