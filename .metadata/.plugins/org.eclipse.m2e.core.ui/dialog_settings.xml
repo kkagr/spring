@@ -2,12 +2,14 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="com.liu.springboot"/>
 			<item value="com.liu.test"/>
 			<item value="com.liu.mabatis"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="springboot"/>
 			<item value="springmvcmybatis"/>
 			<item value="spring"/>
 			<item value="mybatisstudy"/>
@@ -89,13 +91,10 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
-			<item value="org.springmvcmybatis"/>
 		</list>
 		<list key="groupId">
-			<item value="com.liu.test"/>
 		</list>
 		<list key="artifactId">
-			<item value="springmvcmybatis"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

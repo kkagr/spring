@@ -1,0 +1,42 @@
+package com.liu.springboot;
+
+import org.apache.catalina.core.StandardContext;
+import org.apache.catalina.startup.Tomcat;
+
+import com.liu.springboot.servlet.IndexServlet;
+import com.liu.springboot.tomcat.FixContextListener;
+
+public class AppTomcat {
+	
+	public static void main(String[] args) {
+		//使用java内置tomcat运行SpringMVC框架
+		//原理tomcat加载到springMVC注解启动方式，就会创建springMVC容器
+		//创建tomcat服务器
+			start();
+	}
+
+	private static void start() {
+		//创建tomcat服务器
+		Tomcat tomcat = new Tomcat();
+		//指导端口
+		tomcat.setPort(PORT);
+		//是否设置自动部署
+		tomcat.getHost().setAutoDeploy(false);
+		//创建上下文
+		StandardContext standardContext = new StandardContext(); 
+		standardContext.setPath(CONTEXT_PATH);
+		//监听上下文
+		standardContext.addLifecycleListener(new FixContextListener());
+		//tomcat容器添加standardContext
+		tomcat.getHost().addChild(standardContext);
+		//创建servlet
+		tomcat.addServlet(CONTEXT_PATH, SERVLET_NAME, new IndexServlet());
+		//servlet映射
+		standardContext.addServletMappingDecoded("/index", SERVLET_NAME);
+		tomcat.start();
+		Thread.sleep(5000);
+		//
+		tomcat.getServer().await();
+		System.out.println("tomcat启动成功");
+	}
+}

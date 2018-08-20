@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="lombok.Data"/>
-<fullyQualifiedTypeName name="javax.xml.transform.sax.SAXResult"/>
-<fullyQualifiedTypeName name="org.dom4j.io.SAXReader"/>
-<fullyQualifiedTypeName name="javax.swing.text.Document"/>
-<fullyQualifiedTypeName name="javax.lang.model.element.Element"/>
-<fullyQualifiedTypeName name="org.dom4j.Document"/>
-<fullyQualifiedTypeName name="java.security.KeyStore.Entry.Attribute"/>
-<fullyQualifiedTypeName name="java.util.Iterator"/>
-<fullyQualifiedTypeName name="com.liu.spring.test.Test"/>
-<fullyQualifiedTypeName name="org.dom4j.Attribute"/>
-<fullyQualifiedTypeName name="org.dom4j.Element"/>
-<fullyQualifiedTypeName name="com.liu.spring.bean.TestBean"/>
 <fullyQualifiedTypeName name="junit.framework.Test"/>
 <fullyQualifiedTypeName name="com.liu.spring.service.TestService"/>
 <fullyQualifiedTypeName name="com.liu.spring.common.ClassUtil"/>
@@ -53,9 +41,23 @@
 <fullyQualifiedTypeName name="com.liu.mybatis.bean.User"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Proxy"/>
 <fullyQualifiedTypeName name="com.liu.mybatis.sqlsession.MyConfiguration"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
 <fullyQualifiedTypeName name="com.liu.spring.annotation.LCHService"/>
 <fullyQualifiedTypeName name="java.util.Map.Entry"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Field"/>
 <fullyQualifiedTypeName name="com.liu.spring.annotation.LCHAutorited"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.liu.spring.bean.User"/>
+<fullyQualifiedTypeName name="com.liu.spring.common.ReadXmlUtil"/>
+<fullyQualifiedTypeName name="javax.net.ssl.HttpsURLConnection"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+<fullyQualifiedTypeName name="java.util.MissingFormatArgumentException"/>
+<fullyQualifiedTypeName name="org.apache.catalina.startup.Tomcat"/>
+<fullyQualifiedTypeName name="java.nio.charset.StandardCharsets"/>
+<fullyQualifiedTypeName name="org.apache.catalina.core.StandardContext"/>
+<fullyQualifiedTypeName name="org.apache.catalina.LifecycleListener"/>
+<fullyQualifiedTypeName name="javax.swing.tree.FixedHeightLayoutCache"/>
+<fullyQualifiedTypeName name="org.apache.catalina.Context"/>
+<fullyQualifiedTypeName name="org.apache.catalina.Lifecycle"/>
+<fullyQualifiedTypeName name="org.apache.tomcat.util.descriptor.web.LoginConfig"/>
+<fullyQualifiedTypeName name="org.apache.catalina.authenticator.NonLoginAuthenticator"/>
 </qualifiedTypeNameHistroy>

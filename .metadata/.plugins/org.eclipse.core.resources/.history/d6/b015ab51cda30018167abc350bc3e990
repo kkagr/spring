@@ -1,0 +1,38 @@
+package com.liu.springboot.tomcat;
+
+import java.nio.charset.StandardCharsets;
+
+import javax.swing.tree.FixedHeightLayoutCache;
+
+import org.apache.catalina.LifecycleListener;
+import org.apache.catalina.core.StandardContext;
+import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.startup.*;
+/**
+ * 使用java语言操作Tomcat
+ * Tomcat底层最终执行servlet程序 
+* @ClassName: Test 
+* @Description: TODO(这里用一句话描述这个类的作用) 
+* @author kkagr
+* @date 2018年8月19日 下午11:50:36 
+*
+ */
+public class Test {
+	private static int PORT = 8080;
+	private static String CONTEXT_PATH ="/comliu";
+	
+	public static void main(String[] args) {
+		
+		//创建tomcat服务器
+		Tomcat tomcat = new Tomcat();
+		//指导端口
+		tomcat.setPort(PORT);
+		//是否设置自动部署
+		tomcat.getHost().setAutoDeploy(false);
+		//创建上下文
+		StandardContext standardContext = new StandardContext(); 
+		standardContext.setPath(CONTEXT_PATH);
+		//监听上下文
+		standardContext.addLifecycleListener(new FixContextListener());
+	}
+}

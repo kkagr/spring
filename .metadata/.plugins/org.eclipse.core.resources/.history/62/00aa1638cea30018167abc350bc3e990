@@ -1,0 +1,12 @@
+package com.liu.springboot.tomcat;
+
+import org.apache.catalina.LifecycleEvent;
+import org.apache.catalina.LifecycleListener;
+
+public class FixContextListener implements LifecycleListener {
+
+	@Override
+	public void lifecycleEvent(LifecycleEvent event) {
+	}
+
+}

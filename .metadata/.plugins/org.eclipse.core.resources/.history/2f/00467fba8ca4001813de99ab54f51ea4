@@ -1,0 +1,5 @@
+package com.liu.springboot.service;
+
+public class UserService {
+
+}
